@@ -1,7 +1,7 @@
-import type { Country } from '../types/api';
+import type { CountryOption } from '../types/ui';
 
 interface CountrySelectorProps {
-  countries: Country[] | undefined;
+  countries: CountryOption[] | undefined;
   selectedCountry: string;
   onCountryChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
@@ -15,9 +15,9 @@ export default function CountrySelector({
     <div className='form-group'>
       <label htmlFor='country'>Pays :</label>
       <select id='country' value={selectedCountry} onChange={onCountryChange}>
-        {countries?.map((country: Country) => (
+        {countries?.map((country) => (
           <option key={country.isoCode} value={country.isoCode}>
-            {country.name[0]?.text ?? country.isoCode}
+            {country.name ?? country.isoCode}
           </option>
         ))}
       </select>

@@ -1,7 +1,6 @@
 export interface Country {
   isoCode: string;
   name: LocalizedText[];
-  officialLanguages: string[];
 }
 
 export interface Holiday {

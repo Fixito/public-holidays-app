@@ -25,8 +25,18 @@ export default function App() {
     setSelectedCountry(e.target.value);
   };
 
-  if (countriesPending) return <div>Chargement des pays...</div>;
-  if (countriesError) return <div>Erreur: {countriesError.message}</div>;
+  if (countriesPending)
+    return (
+      <main className='container'>
+        <div>Chargement des pays...</div>
+      </main>
+    );
+  if (countriesError)
+    return (
+      <main className='container'>
+        <h1>Erreur: {countriesError.message}</h1>
+      </main>
+    );
 
   return (
     <main className='container'>

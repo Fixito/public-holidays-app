@@ -1,8 +1,8 @@
-import type { Holiday } from '../types/api';
+import type { HolidayDisplay } from '../types/ui';
 
 interface HolidayListProps {
-  holidays: Holiday[] | undefined;
   error: Error | null;
+  holidays: HolidayDisplay[] | undefined;
 }
 
 export default function HolidayList({ holidays, error }: HolidayListProps) {
@@ -13,13 +13,13 @@ export default function HolidayList({ holidays, error }: HolidayListProps) {
 
     return (
       <ul>
-        {holidays?.map((holiday: Holiday) => (
+        {holidays?.map((holiday) => (
           <li key={holiday.id}>
             {new Date(holiday.startDate).toLocaleDateString('fr-FR', {
               month: 'long',
               day: 'numeric',
             })}{' '}
-            - {holiday.name[0]?.text}
+            - {holiday.name ?? 'Nom indisponible'}
           </li>
         ))}
       </ul>
